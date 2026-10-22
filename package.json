@@ -1,0 +1,9 @@
+{
+  "name": "block-island",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A static Three.js Minecraft-style island game",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  }
+}
