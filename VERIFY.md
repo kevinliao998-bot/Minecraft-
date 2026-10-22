@@ -1,45 +1,51 @@
 # VERIFY.md
 
-## STEP 0 The island
-- [ ] AI added: WASD moves forward, left, backward, and right; Space jumps.
-- [ ] AI added: Hold the left mouse button to break a block; cracks appear and advance while held.
-- [ ] AI added: Broken blocks drop a matching pickup; walking over it adds one to its inventory slot.
-- [ ] AI added: Right-click places a block from the selected slot and uses one item; holding right-click can place blocks consecutively.
-- [ ] AI added: Breaking a block has a chance to break nearby blocks too.
-- [ ] AI added: No monsters or crafting.
-- [ ] AI added: Fixed world, at most 32 × 32 × 32 blocks; no endless world or multiplayer.
-- [ ] AI added: Static HTML, CSS, and JavaScript site using Three.js; no server, accounts, or game engine.
-- [ ] AI added: Aim for at least 30 frames per second full screen on the school's older integrated-graphics computers, or CPU-only systems.
-- [ ] AI added: Use only textures from the supplied asset pack, including its block-breaking cracks.
-- [ ] AI added: Double jump is allowed, but the player cannot jump more than twice before landing; repeated double jumps are allowed.
-- [ ] AI added: Random structures may spawn and must use only blocks included in the supplied asset pack.
+## STEP 0 島嶼
 
-## Batch 1: break → drop → pick up → place (the teacher's tests)
+- [ ] AI 新增：WASD 分別向前、左、後、右移動；空白鍵跳躍。
+- [ ] AI 新增：按住滑鼠左鍵破壞方塊；按住時會出現並逐漸加深的裂痕。
+- [ ] AI 新增：方塊被破壞後會掉落相同種類的拾取物；走過拾取物時，對應物品欄增加一個。
+- [ ] AI 新增：按滑鼠右鍵可從目前選取的物品欄放置方塊並消耗一個物品；按住滑鼠右鍵可連續放置方塊。
+- [ ] AI 新增：破壞方塊時有機會連帶破壞附近方塊。
+- [ ] AI 新增：沒有怪物或合成系統。
+- [ ] AI 新增：世界固定，最多 32 × 32 × 32 個方塊；沒有無限延伸世界或多人遊戲。
+- [ ] AI 新增：使用 Three.js 製作靜態 HTML、CSS、JavaScript 網站；不需要伺服器、帳號或遊戲引擎。
+- [ ] AI 新增：全螢幕時，目標是在學校較舊的內建顯示晶片電腦或僅使用 CPU 的系統上達到每秒至少 30 個畫面。
+- [ ] AI 新增：只使用素材包提供的材質，包含破壞方塊用的裂痕材質。
+- [ ] AI 新增：允許二段跳，但著陸前最多只能跳兩次；著陸後可再次二段跳。
+- [ ] AI 新增：可以生成隨機結構，且只能使用素材包中的方塊。
 
-### STEP 1 Break a block
-- [ ] Hold the left button on dirt → cracks appear and grow; the block is gone in under 1 second
-- [ ] Click the left button once → the block is still there (must not happen: gone after one click)
-- [ ] Let go of the button halfway → the cracks disappear; breaking starts over next time
-- [ ] Break stone → it takes longer than dirt, about 2 seconds
+## 第一批：破壞 → 掉落 → 拾取 → 放置（老師的測試）
 
-### STEP 2 It drops
-- [ ] When the block is gone → a small block of the same kind pops out and slowly spins
-- [ ] The small block lands and stays on the ground (must not happen: floating in the air, falling through the ground)
+### STEP 1 破壞方塊
 
-### STEP 3 Pick it up
-- [ ] Walk next to the small block → it flies to you and that slot's number goes up by 1
-- [ ] Stand 3 blocks away → it is not picked up (must not happen)
+- [ ] 按住滑鼠左鍵對著泥土 → 裂痕出現並逐漸加深；不到 1 秒方塊消失。
+- [ ] 只按一下滑鼠左鍵 → 方塊仍在（不可發生只按一下就破壞的情況）。
+- [ ] 按到一半放開按鍵 → 裂痕消失；下次破壞時須從頭開始。
+- [ ] 破壞石頭 → 比泥土花更久，約 2 秒。
 
-### STEP 4 Place it
-- [ ] Choose a slot with a number and right-click the ground → one block is placed and the number goes down by 1
-- [ ] The slot's number is 0 → right-click places nothing (must not happen)
-- [ ] The whole chain: break one → pick it up → place it → the number is back where it started
+### STEP 2 方塊掉落
 
-## Batch 2: my idea (my own tests)
+- [ ] 方塊消失時 → 彈出一個相同種類的小方塊，並緩慢旋轉。
+- [ ] 小方塊落地後會留在地面（不可懸浮或穿過地面掉落）。
 
-### STEP 5 (your idea)
-- [ ] holding right click → place multiple blocks consecutively
-- [ ] pressing space 2 times → double jump
-- [ ] no jumping more than 2 times but can do multiple double jumps
-- [ ] random structures spawn
-- [ ] structures can only be made with the blocks in the zip.
+### STEP 3 拾取方塊
+
+- [ ] 走到小方塊旁邊 → 它會飛向玩家，對應物品欄的數量增加 1。
+- [ ] 距離小方塊 3 格 → 不會拾取（不可發生距離過遠仍被拾取的情況）。
+
+### STEP 4 放置方塊
+
+- [ ] 選擇有物品數量的物品欄，並對地面按滑鼠右鍵 → 放置一個方塊，物品數量減少 1。
+- [ ] 物品欄數量為 0 → 按滑鼠右鍵不會放置方塊（不可發生放置的情況）。
+- [ ] 完整流程：破壞一個方塊 → 拾取 → 放置 → 物品數量回到原本的數值。
+
+## 第二批：我的想法（我自己的測試）
+
+### STEP 5（你的想法）
+
+- [ ] 按住滑鼠右鍵 → 連續放置多個方塊。
+- [ ] 按兩次空白鍵 → 二段跳。
+- [ ] 著陸前不能跳超過兩次，但著陸後可以再次二段跳。
+- [ ] 生成隨機結構。
+- [ ] 結構只能使用 zip 檔中的方塊。
