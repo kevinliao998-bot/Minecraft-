@@ -1,1 +1,17 @@
-You should add wasd forward left backward right, space jump, hold left to break (it cracks 1st), walk over to pick up dropped block, right click to place. Shoudn't have monsters or crafting. It should also have a feature to whenever a block is broken theres a chance more blocks around it. a static site (HTML, CSS, JavaScript) that draws 3D with three.js, with no server, no accounts and no game engine; at least 30 frames per second full screen on the school’s old computers (integrated graphics, or the CPU alone); a fixed world no bigger than 32 × 32 × 32 blocks, so no endless world and no multiplayer; textures only from the asset pack above (the cracks for breaking blocks are in it too)
+你應加入 WASD 前進、左移、後退、右移，並以空白鍵跳躍；按住滑鼠左鍵可破壞方塊（會先出現裂痕）；走到掉落的方塊旁即可拾取，再用滑鼠右鍵放置。遊戲不應有怪物或合成系統。也應加入方塊被破壞時，有機會連帶破壞周圍方塊的功能。這是一個靜態網站（HTML、CSS、JavaScript），使用 Three.js 繪製 3D 畫面，不需要伺服器、帳號或遊戲引擎；在學校較舊的電腦（內建顯示晶片或僅使用 CPU）上，全螢幕時目標至少達到每秒 30 個畫面。世界固定且不超過 32 × 32 × 32 個方塊，不做無限延伸世界或多人遊戲；只能使用上方素材包中的材質（包含破壞方塊用的裂痕材質）。
+
+## 新增的操作與行為需求
+
+- 遊戲進行時按 Escape，顯示暫停選單並暫停遊戲；再次按 Escape 或選擇 Resume 可繼續。
+- 按住 WASD 時，玩家以固定間隔持續逐格移動，每次移動一格，鏡頭平順地移動到新位置。放開按鍵或暫停時，停止連續移動。
+- 開始畫面應說明移動、破壞、拾取、放置及暫停操作。開始遊戲後，讓遊戲畫布取得鍵盤焦點，使鍵盤移動可以正常使用；若瀏覽器不支援滑鼠鎖定，仍須保留 WASD 操作，並說明未鎖定滑鼠時的替代操作方式。也應說明必須先拾取方塊才能放置。
+- 玩家站在地面時，每按一次 WASD，便朝該方向移動一格。玩家在空中也可以移動；只要落地前沒有掉到島嶼下方，就可以安全著陸。若玩家掉到島嶼下方，便觸發重生。
+- 移動滑鼠會轉動第一人稱視角，也會改變玩家面向的方向；即使無法鎖定滑鼠，也必須能使用滑鼠轉動視角。
+- 透過限制高解析度螢幕的內部繪製解析度，並避免不必要地重建 GPU 資源，讓遊戲在較舊硬體上仍能順暢繪製。
+- 按空白鍵跳躍。第一次跳躍後一秒內才可進行第二次跳躍；著陸前最多只能跳兩次。著陸後可以再次進行二段跳。
+- 按住滑鼠左鍵可破壞瞄準的方塊。顯示素材包提供的裂痕階段，按住時每秒前進一個階段。放開按鍵後，移除裂痕並重設破壞進度。泥土須在一秒內破壞；石頭約需兩秒，且比泥土更久。快速點按並放開不能破壞方塊。
+- 每次破壞方塊時，有 5% 機率連帶破壞五格半徑內的附近方塊。
+- 方塊被破壞後，掉落一個同種類的小型拾取物；它會旋轉、落地並留在地面。玩家走到約一格半徑內時，拾取物會移向玩家，並在快捷列最左側的物品欄增加一個該物品。距離玩家三格的拾取物不會被收取。
+- 當滑鼠游標位於目標方塊區域內時，按滑鼠右鍵即可從目前選取的物品欄放置一個方塊，並使該欄數量減一。數量為零時不能放置。按住滑鼠右鍵可連續放置，每次放置消耗一個物品。
+- 每 20 秒嘗試生成一個隨機結構，每次嘗試有 10% 機率成功；成功時最多生成一個結構。結構可混合並重複使用素材包中的方塊，但不能生成在玩家所在位置。
+- 玩家掉到島嶼下方時，若原始出生點仍有地面，便在該處重生；否則使用最近一個仍有地面的較早出生點。若所有有效出生點都沒有地面，便依照相同的世界大小上限及素材規則生成新島嶼，再讓玩家在島上重生。
